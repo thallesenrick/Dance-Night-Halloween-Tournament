@@ -516,3 +516,28 @@
   .participant-modal :is(button, input, select), .participant-camera-shutter::before { transition: none; }
   .participant-modal .participant-modal-close:hover, .participant-modal .participant-save:hover, .participant-modal .participant-save:active, .participant-modal .participant-camera-shutter:hover, .participant-modal .participant-camera-shutter:active { transform: none; }
 }
+/* One compact filter pill, with a single selected label and native dropdown. */
+.participant-modal .participant-filter-control{display:block;width:100%;max-width:160px;height:42px;border:1px solid #e8cad9a6;border-radius:7px;background:#2f2137e6;box-shadow:0 2px 5px #10091640,inset 0 1px 0 #fff7e018;backdrop-filter:blur(8px)}
+.participant-modal .participant-filter-control>svg{position:absolute;left:10px;top:13px;width:15px;height:15px;color:#efbad7;pointer-events:none}
+.participant-modal .participant-filter-control .participant-filter-chevron{left:auto;right:9px;width:12px;height:12px;top:15px;color:#f5e4d2}
+.participant-modal .participant-filter-control select{appearance:none;-webkit-appearance:none;display:block;max-width:none;width:100%;height:100%;border:0;border-radius:7px;background:transparent;color:#fff1df;padding:9px 26px 9px 33px;font:600 11px/1.3 'Segoe UI',sans-serif;box-shadow:none;text-overflow:ellipsis}
+.participant-modal .participant-filter-control:focus-within{outline:2px solid #e6aacb;outline-offset:3px}
+.participant-modal .participant-filter-control select:focus-visible{outline:none}
+.participant-modal .participant-filter-control select:disabled{opacity:.5}
+.participant-camera-status:empty{display:none}
+.participant-camera-ar[hidden]{display:none}
+.participant-camera-status{bottom:103px;max-width:calc(100% - 42px);font-size:10px;background:#201627c9;border:0;border-radius:5px;padding:6px 10px}
+.participant-modal .participant-retake{grid-row:1}
+.participant-modal .participant-modal-close{width:44px;height:44px;right:12px;top:12px}
+[data-theme='dark'] .participant-camera-tag{color:#e3b7d1}
+@media(max-width:400px){.participant-modal .participant-filter-control{height:38px;border-radius:5px}.participant-modal .participant-filter-control select{font-size:10px;padding:7px 19px 7px 24px}.participant-modal .participant-filter-control>svg{left:6px;top:12px;width:12px;height:12px}.participant-modal .participant-filter-control .participant-filter-chevron{right:5px;top:13px;width:10px;height:10px}.participant-camera-status{bottom:88px;font-size:9px}}
+/* The smiley belongs to the name field, while its sticker drawer stays separate. */
+.participant-modal .participant-name-label>label{display:block;font:inherit;color:inherit;margin:0}
+.participant-name-field{position:relative;min-width:0}
+.participant-modal .participant-name-field input{padding-right:54px}
+.participant-modal .participant-name-emoji{position:absolute;top:50%;right:4px;transform:translateY(-50%);width:40px;height:40px;min-width:40px;min-height:40px;padding:8px;border:0;border-left:1px solid #c7a5b35c;border-radius:0 3px 3px 0;background:transparent;color:#a6658b;box-shadow:none;display:grid;place-items:center;transition:background .16s,color .16s}
+.participant-modal .participant-name-emoji:hover{background:#dcb2c84d;color:#784464;transform:translateY(-50%)}
+.participant-name-limit{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+[data-theme='dark'] .participant-modal .participant-name-emoji{color:#dba3c5;border-left-color:#a47a9366}
+[data-theme='dark'] .participant-modal .participant-name-emoji:hover{color:#f7d4e6;background:#ba81a53b}
+@media(prefers-reduced-motion:reduce){.participant-modal .participant-name-emoji{transition:none}}

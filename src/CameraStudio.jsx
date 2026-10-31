@@ -1,5 +1,5 @@
 ﻿import React,{useEffect,useRef,useState} from 'react';
-import {Camera,RotateCcw,Sparkles} from 'lucide-react';
+import {Camera,RotateCcw,Sparkles,ChevronDown} from 'lucide-react';
 
 const effects=[
  {id:'none',name:'Sem efeito'},
@@ -48,7 +48,7 @@ export default function CameraStudio({stream,photo,onPhoto,onRetake,cameraState,
     const created=await createFaceEffects(video.current,overlay.current,status=>{
      if(cancelled)return;
      setTracking(status);
-     setArError(status==='error'?'Os acessórios estão indisponíveis. Você ainda pode fotografar sem efeito.':'');
+     setArError(status==='error'?'Filtros indisponíveis. Você pode fotografar sem efeito.':'');
     });
     if(cancelled){created.dispose();return;}
     instance=created;engine.current=created;
@@ -59,7 +59,7 @@ export default function CameraStudio({stream,photo,onPhoto,onRetake,cameraState,
     if(cancelled)return;
     console.error('3D effects initialization failed:',error);
     selected.current=0;setEffect(0);setArReady(false);setTracking('error');
-    setArError('Os acessórios estão indisponíveis. Você ainda pode fotografar sem efeito.');
+    setArError('Filtros indisponíveis. Você pode fotografar sem efeito.');
    }
   })();
   return()=>{cancelled=true;dispose();};
@@ -95,9 +95,10 @@ export default function CameraStudio({stream,photo,onPhoto,onRetake,cameraState,
  const error=cameraError||mediaError;
  const unavailable=cameraState==='error'||Boolean(error);
  const showPlaceholder=!photo&&(!ready||unavailable);
- const status=photo?'Foto pronta!':captureError||arError||(!ready?'':!arReady?'Preparando os acessórios 3D…':effect===0?'Escolha um filtro e faça sua pose.':tracking==='tracking'?'Seu filtro está acompanhando o rosto.':'Olhe para a câmera para encaixar o filtro.');
+ const status=photo?'Foto pronta!':captureError||arError||(!ready?'':!arReady?'Carregando filtros…':effect===0?'Escolha um filtro ou tire sua foto.':tracking==='tracking'?'Seu filtro está acompanhando o rosto.':'Olhe para a câmera para encaixar o filtro.');
 
  return <div className="participant-camera" data-camera-state={cameraState}>
+  <span className="participant-camera-tag">PHOTO BOOTH ✦</span>
   <div className="participant-camera-view">
    <div className="participant-camera-live">
     <video ref={video} className="participant-camera-video" autoPlay muted playsInline aria-hidden="true" onLoadedData={event=>{
@@ -114,12 +115,13 @@ export default function CameraStudio({stream,photo,onPhoto,onRetake,cameraState,
    </div>}
    <p className="participant-camera-status" role="status" aria-live="polite">{status}</p>
    <div className="participant-camera-controls">
-    <label className="participant-filter-control" htmlFor="participant-camera-filter">
-     <Sparkles aria-hidden="true"/><span>Filtros</span>
+    {!photo&&<label className="participant-filter-control" htmlFor="participant-camera-filter" title="Filtros da câmera">
+     <Sparkles aria-hidden="true"/>
      <select id="participant-camera-filter" aria-label="Filtros da câmera" value={effect} disabled={!ready||Boolean(photo)} onChange={event=>choose(Number(event.target.value))}>
       {effects.map((item,index)=><option key={item.id} value={index} disabled={index>0&&!arReady}>{item.name}</option>)}
      </select>
-    </label>
+     <ChevronDown className="participant-filter-chevron" aria-hidden="true"/>
+    </label>}
     {photo?<button type="button" className="participant-retake" onClick={onRetake}><RotateCcw aria-hidden="true"/>Tirar outra foto</button>:<button type="button" className="participant-camera-shutter" disabled={!canCapture} onClick={capture} aria-label="Tirar foto"><span aria-hidden="true"/></button>}
    </div>
   </div>

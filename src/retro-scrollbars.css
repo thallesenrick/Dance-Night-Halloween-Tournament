@@ -31,13 +31,13 @@
 @supports selector(::-webkit-scrollbar){
  /* Non-auto standard properties override WebKit parts in current Chromium. */
  :root,:root *{scrollbar-width:auto!important;scrollbar-color:auto!important}
- ::-webkit-scrollbar{width:15px;height:15px;background:var(--retro-scroll-track);cursor:url('/cursors/retro-arrow.svg') 2 2,default}
+ ::-webkit-scrollbar{width:15px;height:15px;background:var(--retro-scroll-track);cursor:var(--retro-arrow)}
  ::-webkit-scrollbar-track{background-color:var(--retro-scroll-track);background-image:repeating-conic-gradient(var(--retro-scroll-dot) 0% 25%,transparent 0% 50%);background-size:2px 2px;border:1px solid var(--retro-scroll-shadow);border-radius:0;box-shadow:inset 1px 1px 0 var(--retro-scroll-edge)}
- ::-webkit-scrollbar-thumb{min-height:28px;min-width:28px;border:1px solid var(--retro-scroll-edge);border-radius:0;background:var(--retro-scroll-face);box-shadow:inset 1px 1px 0 var(--retro-scroll-light),inset -1px -1px 0 var(--retro-scroll-shadow);cursor:url('/cursors/retro-hand.svg') 12 2,pointer}
+ ::-webkit-scrollbar-thumb{min-height:28px;min-width:28px;border:1px solid var(--retro-scroll-edge);border-radius:0;background:var(--retro-scroll-face);box-shadow:inset 1px 1px 0 var(--retro-scroll-light),inset -1px -1px 0 var(--retro-scroll-shadow);cursor:var(--retro-hand)}
  ::-webkit-scrollbar-thumb:hover{background:var(--retro-scroll-hover)}
  ::-webkit-scrollbar-thumb:active{box-shadow:inset 1px 1px 0 var(--retro-scroll-shadow),inset -1px -1px 0 var(--retro-scroll-light)}
  ::-webkit-scrollbar-button{display:none}
- ::-webkit-scrollbar-button:single-button{display:block;width:15px;height:15px;border:1px solid var(--retro-scroll-edge);border-radius:0;background-color:var(--retro-scroll-face);background-position:center;background-repeat:no-repeat;background-size:8px 8px;box-shadow:inset 1px 1px 0 var(--retro-scroll-light),inset -1px -1px 0 var(--retro-scroll-shadow);cursor:url('/cursors/retro-hand.svg') 12 2,pointer}
+ ::-webkit-scrollbar-button:single-button{display:block;width:15px;height:15px;border:1px solid var(--retro-scroll-edge);border-radius:0;background-color:var(--retro-scroll-face);background-position:center;background-repeat:no-repeat;background-size:8px 8px;box-shadow:inset 1px 1px 0 var(--retro-scroll-light),inset -1px -1px 0 var(--retro-scroll-shadow);cursor:var(--retro-hand)}
  ::-webkit-scrollbar-button:single-button:vertical:decrement{background-image:var(--retro-scroll-arrow-up)}
  ::-webkit-scrollbar-button:single-button:vertical:increment{background-image:var(--retro-scroll-arrow-down)}
  ::-webkit-scrollbar-button:single-button:horizontal:decrement{background-image:var(--retro-scroll-arrow-left)}

@@ -1,4 +1,5 @@
-﻿export const newGroup = (name='Nova chave') => ({id:crypto.randomUUID(),name,players:[],advance:1,winners:[]});
+﻿import {createId} from './id.js';
+export const newGroup = (name='Nova chave') => ({id:createId(),name,players:[],advance:1,winners:[]});
 export function createRound(ids,index=0){return {name:`Rodada ${index+1}`,pool:[...ids],groups:[newGroup('Chave A')],confirmed:false};}
 export function validateRound(round){
  if(!round.pool.length)throw Error('Adicione participantes à rodada.');

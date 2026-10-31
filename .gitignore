@@ -2,3 +2,5 @@ node_modules/
 dist/
 .sites/
 .npm-cache/
+exports/
+/.openai/roulette-qa/

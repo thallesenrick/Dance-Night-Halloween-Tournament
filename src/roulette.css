@@ -57,3 +57,14 @@
 .record-sector.is-selected>path{stroke:#ffe2a0;stroke-width:4}
 @keyframes selected-song-flash{0%,100%{opacity:1;filter:brightness(1)}35%{opacity:.22;filter:brightness(1.65)}70%{opacity:1;filter:brightness(1.35)}}
 @media(prefers-reduced-motion:reduce){.record-sector.is-selected{animation:none}.record-sector.is-selected>path{stroke:#ffe2a0;stroke-width:5}}
+/* The edit action belongs to the turntable; the drawer leaves the disc visible. */
+.scrap-edit{position:absolute;left:1050px;top:746px;width:64px;height:64px;min-width:calc(40px / var(--roulette-ui-scale,1));min-height:calc(40px / var(--roulette-ui-scale,1));padding:0;border:2px solid #d398b5;border-radius:50%;background:#342435;color:#f3dfc5;box-shadow:2px 4px 0 #19141699,inset 0 0 0 3px #634456;transform:rotate(-5deg);z-index:2}
+.scrap-edit svg{width:max(28px,calc(20px / var(--roulette-ui-scale,1)));height:max(28px,calc(20px / var(--roulette-ui-scale,1)))}
+.scrap-edit:hover{background:#895370;color:#fff0da;transform:rotate(4deg) scale(1.06)}
+.scrap-edit:disabled{opacity:.55}
+.scrap-catalog-message{position:absolute;left:600px;top:367px;width:350px;margin:0;padding:18px 12px;background:#f1e2cce8;color:#402b37;border:1px dashed #b9809c;box-shadow:3px 4px 0 #291c2c44;text-align:center;font:700 20px/1.3 'Courier New',monospace;transform:rotate(-2deg)}
+.scrap-catalog-message span{display:block;margin-top:8px;font:15px/1.4 Arial,sans-serif}
+.reference-music-overlay.has-music-editor{padding-right:calc(min(560px,46vw) + 32px)}
+.has-music-editor>.scrap-roulette{width:min(calc(100vw - min(560px,46vw) - 48px),calc((100dvh - 24px)*1.5))}
+@media(max-width:760px){.reference-music-overlay.has-music-editor{padding:8px}.has-music-editor>.scrap-roulette{width:min(98vw,calc((100dvh - 16px)*1.5))}}
+@media(prefers-reduced-motion:reduce){.scrap-edit{transition:none}}

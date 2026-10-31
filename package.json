@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
-    "test": "node --test src/tournament.test.js src/board.test.js"
+    "test": "node --test src/tournament.test.js src/board.test.js src/music-library.test.js src/id.test.js",
+    "export:tablet": "node scripts/export-tablet.mjs",
+    "dev:tablet": "vite --host 0.0.0.0 --port 5175 --strictPort --configLoader runner"
   },
   "dependencies": {
     "@mediapipe/tasks-vision": "^1.2.0",

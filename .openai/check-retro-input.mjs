@@ -5,7 +5,7 @@ try{
  const seed={players:Array.from({length:28},(_,i)=>({id:'p'+i,name:'Convidado '+(i+1),photo:''})),rounds:[],board:createRoundOf16Board()};await page.addInitScript(d=>localStorage.setItem('halloween-v1',JSON.stringify(d)),seed);
  await page.goto('http://127.0.0.1:5174/');const cursor=selector=>page.locator(selector).first().evaluate(n=>getComputedStyle(n).cursor);
  if(!(await cursor('.cover-start')).includes('retro-hand.svg'))throw Error('Home click cursor missing');
- const sprites=['arrow','hand','grab','grabbing','text','crosshair','disabled','wait'];
+ const sprites=['arrow','arrow-click','hand','hand-click','grab','grabbing','text','crosshair','disabled','wait'];
  await page.evaluate(async sprites=>{for(const sprite of sprites){const img=new Image();img.src='/cursors/retro-'+sprite+'.svg';await img.decode();if(img.naturalWidth!==32||img.naturalHeight!==32)throw Error('Invalid sprite '+sprite)}},sprites);
  await page.getByRole('button',{name:'Começar o torneio',exact:true}).click();for(const [selector,sprite] of [['.home-button','hand'],['.party-canvas-scroll','grab'],['.space-grip','grab'],['.space-node','arrow'],['.space-node input','text']])if(!(await cursor(selector)).includes('retro-'+sprite+'.svg'))throw Error('Wrong cursor '+selector+': '+await cursor(selector));
  await page.getByRole('button',{name:'Adicionar slot',exact:true}).click();if(!(await cursor('.party-canvas-scroll')).includes('retro-crosshair.svg'))throw Error('Slot placement cursor missing');
@@ -13,6 +13,6 @@ try{
  await page.screenshot({path:'.openai/roulette-qa/retro-scrollbar-light.png'});
  await page.getByRole('switch',{name:'Modo escuro',exact:true}).click();await page.locator('.bat-burst').waitFor({timeout:5000});await page.screenshot({path:'.openai/roulette-qa/retro-scrollbar-dark.png'});
  await page.evaluate(async sprites=>{const box=document.createElement('div');box.id='cursor-preview';Object.assign(box.style,{position:'fixed',left:'25px',top:'100px',display:'grid',gridTemplateColumns:'repeat(4,130px)',gap:'8px',padding:'20px',background:'#eee0ca',border:'2px solid #9b7a90',zIndex:'100'});for(const sprite of sprites){const cell=document.createElement('div');cell.style.cssText='display:grid;place-items:center;gap:8px;color:#39263a;font:12px monospace;padding:10px;background:#fff5e1';const image=new Image();image.src='/cursors/retro-'+sprite+'.svg';await image.decode();image.style.cssText='width:80px;height:80px;image-rendering:pixelated';cell.append(image,document.createTextNode(sprite));box.append(cell)}document.body.append(box)},sprites);await page.locator('#cursor-preview').screenshot({path:'.openai/roulette-qa/retro-cursor-sprites.png'});
- if(errors.length)throw Error(errors.join('\n'));console.log('PASS:8valid32px cursor sprites, navigation/click/drag/text/placement states,15px beveled native scrollbar and scrolling, both themes');
+ if(errors.length)throw Error(errors.join('\n'));console.log('PASS:10valid32px cursor sprites, navigation/click/drag/text/placement states,15px beveled native scrollbar and scrolling, both themes');
 }finally{await browser.close()}
 

@@ -1,0 +1,15 @@
+﻿/* The target stays 44 screen pixels wide while the visible connector stays compact. */
+.party-workspace .space-node .space-port{position:absolute;top:calc(70px - var(--port-hit-size)/2);width:var(--port-hit-size);height:var(--port-hit-size);min-width:0;min-height:0;padding:0;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;box-shadow:none;transform:none;z-index:6;touch-action:none;overflow:visible;transition:none}
+.party-workspace .space-node .input-port{left:calc(var(--port-hit-size)/-2);right:auto}
+.party-workspace .space-node .output-port{left:auto;right:calc(var(--port-hit-size)/-2)}
+.party-workspace .space-node .space-port:hover{background:transparent;transform:none;box-shadow:none}
+.port-dot{position:relative;display:block;width:var(--port-dot-size);height:var(--port-dot-size);border:2px solid #fff2df;border-radius:50%;background:#c58eae;box-shadow:0 0 0 1px #b28a9b,1px 2px 2px #5a3a4d33;pointer-events:none;transition:transform .16s cubic-bezier(.2,.8,.2,1.3),box-shadow .16s}
+.output-port .port-dot{background:#efb44c}
+.space-port.is-near .port-dot,.space-port:hover .port-dot,.space-port:focus-visible .port-dot{transform:scale(1.7);box-shadow:0 0 0 3px #dca8c780,0 0 0 8px #e8bcd72b,0 2px 8px #9b5b8c66}
+.output-port.is-near .port-dot,.output-port:hover .port-dot{box-shadow:0 0 0 3px #efbc6e88,0 0 0 8px #f6d39933,0 2px 8px #a8764266}
+.space-port.is-source .port-dot{transform:scale(1.45);box-shadow:0 0 0 4px #e6acb980,0 0 0 10px #ecbed42b}
+.space-port.is-eligible .port-dot{box-shadow:0 0 0 3px #e2add653}
+.space-port.is-eligible.is-near .port-dot{transform:scale(1.85);box-shadow:0 0 0 3px #ddb6cf,0 0 0 9px #e2add64d}
+[data-theme='dark'] .port-dot{border-color:#4d3347;box-shadow:0 0 0 1px #d2abc1}
+.party-workspace .space-node .space-port:focus-visible{outline:2px dashed #c07fa7;outline-offset:-7px}
+@media(prefers-reduced-motion:reduce){.port-dot{transition:none}}

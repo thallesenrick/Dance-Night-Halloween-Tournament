@@ -1,4 +1,5 @@
-﻿export function syncBoard(board){
+﻿import {createId} from './id.js';
+export function syncBoard(board){
  const next=structuredClone(board),resolved=new Set();
  function visit(g,path=new Set()){
  if(resolved.has(g.id))return;
@@ -13,7 +14,7 @@
  }
  next.groups.forEach(g=>visit(g));return next;
 }
-export function boardGroup(name,x=40,y=40){return {id:crypto.randomUUID(),name,x,y,players:[],manualPlayers:[],sources:[],winners:[]};}
+export function boardGroup(name,x=40,y=40){return {id:createId(),name,x,y,players:[],manualPlayers:[],sources:[],winners:[]};}
 export function battle(board,a,b){
  if(a===b)throw Error('Escolha duas chaves diferentes.');
  if(board.groups.some(g=>g.sources?.includes(a)&&g.sources?.includes(b)))throw Error('Essas chaves já têm um confronto.');
