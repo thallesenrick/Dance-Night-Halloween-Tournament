@@ -1,0 +1,3 @@
+﻿import {chromium} from 'playwright-core';
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+const page=await browser.newPage({viewport:{width:320,height:700}});await page.goto('http://127.0.0.1:5174/');await page.getByRole('button',{name:'Começar o torneio'}).click();console.log(await page.locator('.party-toolbar').boundingBox());console.log(await page.locator('.party-roster').boundingBox());console.log(await page.locator('.party-toolbar button').evaluateAll(buttons=>buttons.map(b=>({text:b.textContent,box:JSON.stringify(b.getBoundingClientRect().toJSON())}))));await browser.close();

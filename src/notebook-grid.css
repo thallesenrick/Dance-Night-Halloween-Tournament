@@ -1,0 +1,4 @@
+﻿/* Fine React Bits squares sit over the paper and below all canvas interactions. */
+.party-workspace>.notebook-grid{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.party-workspace>.party-canvas-scroll{position:relative;z-index:1}
+.notebook-grid .shape-grid,.notebook-grid .shape-grid-canvas{pointer-events:none}

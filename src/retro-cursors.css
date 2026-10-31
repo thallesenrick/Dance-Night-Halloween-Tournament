@@ -1,0 +1,13 @@
+﻿/* Original 32px pixel cursors, inspired by classic desktop interfaces. */
+:root{--retro-arrow:url('/cursors/retro-arrow.svg') 2 2,default;--retro-hand:url('/cursors/retro-hand.svg') 12 2,pointer;--retro-grab:url('/cursors/retro-grab.svg') 16 16,grab;--retro-grabbing:url('/cursors/retro-grabbing.svg') 16 16,grabbing;--retro-text:url('/cursors/retro-text.svg') 16 16,text;--retro-crosshair:url('/cursors/retro-crosshair.svg') 16 15,crosshair;--retro-disabled:url('/cursors/retro-disabled.svg') 16 16,not-allowed;--retro-wait:url('/cursors/retro-wait.svg') 16 16,wait}
+html,body,.app{cursor:var(--retro-arrow)}
+.app *{cursor:inherit}
+.app :is(button,a,select,summary,[role='button'],label[for],input[type='checkbox'],input[type='radio']){cursor:var(--retro-hand)}
+.app :is(input:not([type='checkbox']):not([type='radio']),textarea,[contenteditable='true']){cursor:var(--retro-text)}
+.app :is(button:disabled,input:disabled,select:disabled,[aria-disabled='true']){cursor:var(--retro-disabled)}
+.app .party-canvas-scroll,.app .space-grip{cursor:var(--retro-grab)}
+.app .party-canvas-scroll:active,.app .space-grip:active{cursor:var(--retro-grabbing)}
+.app .space-node{cursor:var(--retro-arrow)}
+.app .tool-square,.app .tool-link,.app .tool-link .space-node,.app .space-port{cursor:var(--retro-crosshair)}
+.app .theme-toggle:disabled,.app .party-workspace .party-toolbar .canvas-tools .theme-toggle:disabled{cursor:var(--retro-wait)}
+@media(forced-colors:active){html,body,.app{cursor:auto}.app *{cursor:revert}}

@@ -1,0 +1,16 @@
+﻿/* Theme particles are transient, non-interactive and separate from the dashboard art. */
+.theme-particles{position:fixed;inset:0;z-index:70;pointer-events:none;overflow:hidden}
+.bat-flight{position:absolute;left:0;top:0;display:block;opacity:0;offset-distance:0%;offset-anchor:50% 50%;offset-rotate:auto 90deg;animation:bat-follow var(--bat-duration) var(--bat-delay) cubic-bezier(.3,.04,.58,.95) both,bat-presence var(--bat-duration) var(--bat-delay) linear both;filter:drop-shadow(0 3px 3px #0b07173d);will-change:offset-distance}
+.bat-body{display:block;width:100%;height:100%;animation:bat-bank var(--bat-bank) ease-in-out infinite alternate}
+.bat-body>svg{display:block;width:100%;height:auto;stroke:#d7a0c25e;stroke-width:1;overflow:visible}
+.bat-wing{transform-origin:80px 44px;animation:bat-flap var(--bat-flap) var(--bat-phase) ease-in-out infinite alternate}
+.bat-wing-right{animation-delay:calc(var(--bat-phase) - .055s)}
+@keyframes bat-follow{from{offset-distance:0%}to{offset-distance:100%}}
+@keyframes bat-presence{0%{opacity:0;transform:scale(.72)}9%{opacity:.95}48%{transform:scale(1)}90%{opacity:.95}100%{opacity:0;transform:scale(.82)}}
+@keyframes bat-bank{from{transform:translateY(1px) rotate(-3deg)}to{transform:translateY(-4px) rotate(4deg)}}
+@keyframes bat-flap{from{transform:scaleX(1) rotate(-3deg)}to{transform:scaleX(.3) rotate(6deg)}}
+.theme-sparkle{position:absolute;display:block;opacity:0;transform:translate(-50%,-50%) scale(0);animation:theme-glint var(--sparkle-duration) var(--sparkle-delay) ease-in-out both;filter:drop-shadow(0 0 3px #ffd21dcc) drop-shadow(0 0 10px #ffd21d99)}
+.theme-sparkle>svg{display:block;width:100%;height:auto}
+@keyframes theme-glint{0%{opacity:0;transform:translate(-50%,-50%) scale(.1) rotate(var(--sparkle-turn))}22%{opacity:1;transform:translate(-50%,-55%) scale(1) rotate(calc(var(--sparkle-turn) + 9deg))}45%{opacity:.78;transform:translate(-50%,-62%) scale(.7) rotate(calc(var(--sparkle-turn) + 13deg))}62%{opacity:1;transform:translate(-50%,-68%) scale(.9) rotate(calc(var(--sparkle-turn) + 17deg))}100%{opacity:0;transform:translate(-50%,-95%) scale(.05) rotate(calc(var(--sparkle-turn) + 25deg))}}
+@media(prefers-reduced-motion:reduce){.theme-particles{display:none}.bat-flight,.bat-body,.bat-wing,.theme-sparkle{animation:none}}
+

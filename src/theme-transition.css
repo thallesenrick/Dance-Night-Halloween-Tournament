@@ -1,0 +1,14 @@
+﻿@property --theme-reveal-radius{syntax:'<length>';inherits:false;initial-value:0px}
+.theme-transitioning::view-transition-old(root),.theme-transitioning::view-transition-new(root){animation:none;mix-blend-mode:normal}
+.theme-transitioning::view-transition-old(root){z-index:1}
+.theme-transitioning::view-transition-new(root){z-index:2;--theme-reveal-radius:0px;mask-image:radial-gradient(circle at var(--theme-origin-x,50vw) var(--theme-origin-y,50vh),#000 0px,#000 max(0px,calc(var(--theme-reveal-radius) - 110px)),transparent var(--theme-reveal-radius));mask-repeat:no-repeat}
+.theme-transitioning::view-transition-group(root){animation:none}
+.theme-transitioning::view-transition{pointer-events:none}
+.theme-toggle:disabled,.party-workspace .party-toolbar .canvas-tools .theme-toggle:disabled{opacity:1;cursor:progress}
+/* Leave decoration in the printed collage; the dashboard has no floating stickers. */
+.party-workspace .party-roster h2>span{display:none;animation:none}
+@media(prefers-reduced-motion:reduce){.theme-transitioning::view-transition-new(root){mask-image:none}}
+
+/* Native snapshots must capture final control colors, not intermediate CSS transitions. */
+.theme-transitioning .app *,.theme-transitioning .app *:before,.theme-transitioning .app *:after{transition:none!important}
+

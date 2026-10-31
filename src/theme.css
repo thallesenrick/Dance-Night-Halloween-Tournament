@@ -1,0 +1,145 @@
+﻿/* Theme controls retain the paper-and-tape palette in both modes. */
+:root{color-scheme:light}
+:root[data-theme='dark']{color-scheme:dark;background:#18131d;color:#f3e6d7}
+.party-workspace .party-toolbar .home-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;flex:none;min-height:56px;padding:13px 19px;border:1px solid #d45c23;border-radius:7px;background:#ef7429;color:#291b17;font-size:13px;font-weight:750;box-shadow:2px 3px 0 #7f3f2a3b;transform:rotate(-1.5deg)}
+.party-workspace .party-toolbar .home-button>svg{width:20px;height:20px}
+.party-workspace .party-toolbar .home-button:hover{background:#ff9855;color:#261611;transform:rotate(0) translateY(-1px)}
+.theme-toggle,.party-workspace .canvas-tools .theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 12px;background:#eee0ce;color:#4f384b;border:1px solid #cdb2bb;border-radius:7px;font-size:12px;font-weight:650;white-space:nowrap;box-shadow:0 2px 0 #72535c16}
+.theme-toggle:hover,.party-workspace .canvas-tools .theme-toggle:hover{background:#ead0df;color:#392538;border-color:#bc82a3}
+.theme-toggle-track{display:inline-flex;align-items:center;width:34px;height:20px;padding:2px;border-radius:999px;flex:none;background:#c6afa9;box-shadow:inset 0 1px 2px #4a30482e;transition:background .2s}
+.theme-toggle-thumb{display:block;flex:none;width:16px;height:16px;background:#fff6e8;border-radius:50%;box-shadow:0 1px 3px #533c4e42;transform:translateX(0);transition:transform .2s}
+.theme-toggle[aria-checked='true'] .theme-toggle-track{background:#bc7da6}
+.theme-toggle[aria-checked='true'] .theme-toggle-thumb{transform:translateX(14px)}
+.home-theme-control{position:fixed;top:22px;right:24px;z-index:10}
+.home-theme-control .theme-toggle{background:#f2e4d1f2;box-shadow:2px 3px 0 #4b2c2722}
+.home-button:focus-visible,.theme-toggle:focus-visible{outline:3px solid #ae5889;outline-offset:4px}
+
+/* Dark scrapbook: plum paper, warm lettering, rose tape. Photos remain untouched. */
+[data-theme='dark'] .party-workspace{background-color:#211a28;background-image:linear-gradient(115deg,#211827d1,#231b2bc9),url('/dashboard-scrapbook.png');background-size:108% 110%;background-position:center;color:#f2e4d8}
+[data-theme='dark'] .party-canvas-scroll{scrollbar-color:#825777 #241c2b}
+[data-theme='dark'] .party-workspace .canvas-caption h1{color:#f3e4cc}
+[data-theme='dark'] .party-workspace .canvas-caption h1 em{color:#e3a1c5}
+[data-theme='dark'] .party-workspace .canvas-caption h1 em:after{background:#dba3c2}
+[data-theme='dark'] .party-workspace .canvas-caption p{color:#c2a9bd}
+[data-theme='dark'] .party-workspace .canvas-tools{background:linear-gradient(120deg,#382a40,#2b2133);border-color:#59405c;box-shadow:2px 4px 8px #0e091d4d}
+[data-theme='dark'] .party-workspace .canvas-tools button{color:#e9d7e5}
+[data-theme='dark'] .party-workspace .canvas-tools button:hover{background:#53384e;color:#fff0dc}
+[data-theme='dark'] .party-workspace .canvas-tools button.active{background:#b7779c;color:#221525}
+[data-theme='dark'] .party-workspace .canvas-tools .preset-button{background:#493747;color:#f2ddcf;border-color:#74536a}
+[data-theme='dark'] .party-workspace .canvas-tools .preset-subtitle{color:#c4a2b9}
+[data-theme='dark'] .party-workspace .canvas-tools .theme-toggle,[data-theme='dark'] .theme-toggle{background:#392b42;border-color:#75516d;color:#f5e1ed}
+[data-theme='dark'] .home-theme-control .theme-toggle{background:#2e2235ed}
+[data-theme='dark'] .party-workspace .space-node{background:linear-gradient(125deg,#3a2c42f5,#302437fa);border-color:#66505d;box-shadow:2px 4px 5px #0e0a163d,0 1px 1px #a8809722 inset;color:#f5e2d5}
+[data-theme='dark'] .party-workspace .space-node.has-winner{background:linear-gradient(125deg,#4f3a41,#3c2b36);border-color:#ad8755}
+[data-theme='dark'] .space-grip,[data-theme='dark'] .space-grip button{color:#c0a5b9}
+[data-theme='dark'] .space-node>input{color:#f8e8d5;background:transparent}
+[data-theme='dark'] .space-footer{color:#bda2b6}
+[data-theme='dark'] .space-person:before,[data-theme='dark'] .waiting-card:before{background:#4b3b4b;border-color:#71556a}
+[data-theme='dark'] .space-person strong{color:#f3dfd2}
+[data-theme='dark'] .space-person.winner:before{background:#664a43;border-color:#d0a265}
+[data-theme='dark'] .waiting-avatar{background:linear-gradient(130deg,#6c506e,#4c3856);border-color:#9c7a90;box-shadow:0 3px 6px #150e2140}
+[data-theme='dark'] .waiting-avatar svg{color:#dfb8d3}
+[data-theme='dark'] .waiting-card .waiting-text{color:#ddbbd0}
+[data-theme='dark'] .slot-photo{border-color:#ae89a0}
+[data-theme='dark'] .slot-photo .initial{color:#f5d8ea}
+[data-theme='dark'] .space-port{border-color:#483140;box-shadow:0 0 0 1px #bf92b0}
+[data-theme='dark'] .space-song{background:#69465f;color:#f5e4dc}
+[data-theme='dark'] .party-roster{background:linear-gradient(110deg,#35283df5,#2c2134fa);border-color:#62465a;color:#f6e4da;box-shadow:-2px 3px 18px #100b1a55}
+[data-theme='dark'] .party-roster h2,[data-theme='dark'] .roster-heading .paper-label{color:#f4e5d5}
+[data-theme='dark'] .party-roster h2 span{color:#d69bbc}
+[data-theme='dark'] .party-roster>p,[data-theme='dark'] .guest-number{color:#c5a8be}
+[data-theme='dark'] .sidebar-participant-count{color:#e0b8d1}
+[data-theme='dark'] .roster-heading .sidebar-collapse,[data-theme='dark'] .sidebar-expand{background:linear-gradient(110deg,#48344a,#33263b);color:#f1dae6;border-color:#7c5971;box-shadow:-2px 3px 7px #100b1a44}
+[data-theme='dark'] .roster-heading .sidebar-collapse:hover,[data-theme='dark'] .sidebar-expand:hover{background:#63405a;color:#fff1e2}
+[data-theme='dark'] .roster-add{background:#67485e;border-color:#95637f;color:#f8e8dd}
+[data-theme='dark'] .roster-add:hover{background:#845673}
+[data-theme='dark'] .guest{border-color:#74566d}
+[data-theme='dark'] .guest strong{color:#f2e2d6}
+[data-theme='dark'] .guest>button{color:#d2a9c3}
+[data-theme='dark'] .guest .avatar{border-color:#ae89a0}
+[data-theme='dark'] .guest-empty{color:#b894b0}
+[data-theme='dark'] .roster-bottom{border-color:#705168}
+[data-theme='dark'] .roster-bottom>div,[data-theme='dark'] .roster-bottom>small{color:#baa0b3}
+[data-theme='dark'] .roster-bottom>div b{color:#f3d4e7}
+[data-theme='dark'] .place-button{background:linear-gradient(120deg,#bf82a4,#a86f98);border-color:#c28da9;color:#241b28;box-shadow:3px 4px 0 #6f486c}
+[data-theme='dark'] .map-zoom{background:#33263b;border-color:#77516e;box-shadow:2px 3px 5px #0b071640}
+[data-theme='dark'] .map-zoom button,[data-theme='dark'] .map-zoom span{color:#eed9e5}
+[data-theme='dark'] .map-zoom button:hover{background:#573b51}
+[data-theme='dark'] .cancel-wire{background:#594032;border-color:#c18e6c;color:#f7e2c7}
+[data-theme='dark'] .music-launch{background:#382339;border-color:#d6ae82;color:#f4e2cc}
+[data-theme='dark'] .music-launch:hover{background:#68405c}
+[data-theme='dark'] .dock-current{background:#473245;color:#f6e4d2;box-shadow:2px 3px 0 #160f2244}
+
+/* The invitation keeps its art, with a quieter night-time backdrop. */
+[data-theme='dark'] .collage-cover{background:#201827;color:#f5e1c3}
+[data-theme='dark'] .collage-art{opacity:.34}
+[data-theme='dark'] .cover-invite h1{color:#f8e8cd;text-shadow:1px 2px 0 #281b25}
+[data-theme='dark'] .cover-invite h1 span{color:#f29c69}
+[data-theme='dark'] .cover-kicker{color:#e8ccac}
+[data-theme='dark'] .cover-note{color:#e4c3aa}
+[data-theme='dark'] .cover-floating .ink-star{color:#d0a17b}
+
+/* Dialog surfaces match the dashboard instead of changing the camera or portraits. */
+[data-theme='dark'] .overlay{background:#0c0812df}
+[data-theme='dark'] .quick-modal{background:linear-gradient(120deg,#3d2c40,#2e2235);border:1px solid #795971;color:#f7e5d4;box-shadow:8px 10px 0 #10081988}
+[data-theme='dark'] .quick-modal h2{color:#f5dfcf}
+[data-theme='dark'] .quick-modal .eyebrow,[data-theme='dark'] .quick-modal label{color:#d3b0c7}
+[data-theme='dark'] .quick-modal input{background:#241c2c;border-color:#79546e;color:#f9e6d4}
+[data-theme='dark'] .quick-modal input::placeholder{color:#b49aaf}
+[data-theme='dark'] .quick-modal .photo-preview{background:#4c3853;border-color:#aa829b;color:#d6b6cc}
+[data-theme='dark'] .quick-modal .photo-actions button{background:#493347;border-color:#7c5570;color:#efcfdf}
+[data-theme='dark'] .quick-modal .gold{background:#c889ab;color:#221727}
+[data-theme='dark'] .quick-modal .close{color:#e0b9d0}
+[data-theme='dark'] .toast{background:#493045;border-color:#b27b9e;color:#f9e5d4}
+[data-theme='dark'] .toast button{color:#e6bfd3}
+[data-theme='dark'] .chosen-modal{background:radial-gradient(ellipse at top,#64435c,#332739 70%);border-color:#ac8b68;color:#f7e4d1}
+[data-theme='dark'] .chosen-modal h2{color:#f8e6cd}
+[data-theme='dark'] .chosen-modal p,[data-theme='dark'] .chosen-modal>small{color:#d1a9c3}
+[data-theme='dark'] .chosen-modal>strong{background:#211a27;color:#ffe8c8}
+[data-theme='dark'] .chosen-modal .roulette-close{background:#493347;color:#f4dce9;border-color:#765269}
+[data-theme='dark'] .victory-message{background:#3f2d40f7;border-color:#d8ab57}
+[data-theme='dark'] .victory-message strong{color:#f8e6ce}
+[data-theme='dark'] .victory-message p{color:#e0bdd1}
+
+/* A night sleeve around the same interactive roulette; only the bitmap is toned. */
+[data-theme='dark'] .roulette-collage-base{filter:brightness(.70) saturate(.8)}
+[data-theme='dark'] .scrap-filters>p{color:#f2dfc5;text-shadow:0 1px 2px #1d1423}
+[data-theme='dark'] .scrap-filters button{background:linear-gradient(110deg,#574254f5,#463243f5);color:#f7e4d1;border-color:#ac8297;box-shadow:1px 3px 0 #23152166}
+[data-theme='dark'] .scrap-filters button.selected{background:linear-gradient(110deg,#df9bbc,#b6779d);color:#261c25;border-color:#f0c0d9;box-shadow:0 0 0 2px #55374b,2px 4px 0 #23152166}
+[data-theme='dark'] .scrap-filters button:hover{background:#b4779b;color:#fff1dd}
+[data-theme='dark'] .scrap-current>span{color:#2b2029}
+[data-theme='dark'] .scrap-current>strong{color:#fff0d4;text-shadow:0 1px 1px #1a1118}
+[data-theme='dark'] .scrap-close{color:#2c1b28}
+[data-theme='dark'] .scrap-close:hover{background:#e1a6c5;color:#241321}
+[data-theme='dark'] .scrap-target{background:#473345f2;color:#f5ddce;box-shadow:1px 2px 3px #160d2066}
+[data-theme='dark'] .scrap-target select{background:#302336;color:#f8e4d4;border-color:#a47b91}
+[data-theme='dark'] .scrap-spin{color:#fff1d3}
+[data-theme='dark'] .scrap-spin:hover{background:#c17ca640}
+
+@media(max-width:800px){
+ .party-workspace .party-toolbar{flex-wrap:wrap;gap:6px}
+ .party-workspace .party-toolbar .home-button{min-height:44px;padding:10px 13px;gap:6px;font-size:12px}
+ .party-workspace .party-toolbar .home-button>svg{width:18px;height:18px}
+ .party-workspace .party-toolbar .canvas-tools{display:contents}
+ .party-workspace .canvas-tools button{border:1px solid #d9c7b3;background:#f2e6d6;box-shadow:0 2px 2px #5d3a3122;min-height:44px;padding:9px 10px}
+ .party-workspace .canvas-tools .preset-button{font-size:10px;padding:7px 9px;gap:5px;margin-left:0}
+ .party-workspace .canvas-tools .preset-subtitle{font-size:8px;margin-top:2px}
+ .party-workspace .canvas-tools .theme-toggle{padding:9px 8px;gap:5px}
+ .party-workspace .canvas-tools .theme-toggle-label{display:none}
+ .home-theme-control{top:14px;right:14px}
+ .home-theme-control .theme-toggle{min-height:40px;padding:8px 10px}
+ [data-theme='dark'] .party-workspace .canvas-tools button{background:#37293d;border-color:#73546b}
+ [data-theme='dark'] .party-workspace .canvas-tools button.active{background:#b7779c;color:#221525}
+}
+@media(max-width:700px){[data-theme='dark'] .cover-invite{background:#2c2032e8}}
+@media(max-width:380px){
+ .party-workspace .canvas-tools button{font-size:10px;padding:9px 8px;gap:5px}
+ .party-workspace .party-toolbar .home-button{padding:10px 11px}
+ .party-workspace .canvas-tools .theme-toggle{gap:4px;padding:9px 6px}
+ .party-workspace .canvas-tools .theme-toggle>svg{width:16px;height:16px}
+ .theme-toggle-track{width:30px;height:18px}
+ .theme-toggle-thumb{width:14px;height:14px}
+ .theme-toggle[aria-checked='true'] .theme-toggle-thumb{transform:translateX(12px)}
+}
+[data-theme='dark'] .scrap-filters>p{display:table;margin:0 auto 15px;padding:3px 12px;background:#352337dc;border-radius:2px;color:#f7e5cf;text-shadow:none}
+@media(max-width:380px){.party-workspace .party-roster,.party-workspace .sidebar-expand{top:170px}}

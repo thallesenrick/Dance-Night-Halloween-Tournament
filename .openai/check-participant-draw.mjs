@@ -1,0 +1,16 @@
+﻿import {chromium} from 'playwright-core';
+import {createRoundOf16Board} from '../src/board.js';
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});const page=await browser.newPage({viewport:{width:1366,height:768}}),errors=[];page.on('pageerror',e=>{errors.push(e.message);console.log(e.message)});
+const seed={players:['Luna','Nina','Sol','Theo'].map((name,i)=>({id:'p'+i,name,photo:''})),rounds:[],board:createRoundOf16Board()};
+try{
+ await page.addInitScript(d=>localStorage.setItem('halloween-v1',JSON.stringify(d)),seed);await page.goto('http://127.0.0.1:5174/');await page.getByRole('button',{name:'Começar o torneio',exact:true}).click();
+ await page.evaluate(async()=>{const {mountGrid}=await import('/.openai/grid-hover-fixture.jsx');window.removeGridFixture=mountGrid()});await page.waitForTimeout(150);
+ const hash=()=>page.locator('#hover-grid-fixture canvas').evaluate(c=>{const pixels=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let hash=2166136261;for(let i=0;i<pixels.length;i+=13)hash=Math.imul(hash^pixels[i],16777619)>>>0;return hash});const before=await hash();await page.mouse.move(400,200);await page.mouse.click(500,250);await page.waitForTimeout(500);if(await hash()!==before)throw Error('Grid still responds to pointer');await page.evaluate(()=>window.removeGridFixture());
+ const sort=page.getByRole('button',{name:'Sortear participantes',exact:true}),getBoard=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('halloween-v1')).board);const untouched=JSON.stringify(await getBoard());
+ await sort.click();const dialog=page.getByRole('dialog',{name:'Sorteando participantes',exact:true});await dialog.waitFor();const bar=dialog.getByRole('progressbar');const first=Number(await bar.getAttribute('aria-valuenow'));await page.waitForTimeout(450);const second=Number(await bar.getAttribute('aria-valuenow'));if(second<=first)throw Error('Progress is not advancing');if(JSON.stringify(await getBoard())!==untouched)throw Error('Results committed before reveal');
+ await page.screenshot({path:'.openai/roulette-qa/participant-draw.png'});await page.getByRole('button',{name:'Cancelar sorteio',exact:true}).click();await dialog.waitFor({state:'detached'});if(JSON.stringify(await getBoard())!==untouched)throw Error('Cancellation mutated board');
+ await sort.click();await dialog.waitFor();await dialog.waitFor({state:'detached',timeout:7000});const result=await getBoard(),ids=result.groups.filter(g=>!g.sources.length).flatMap(g=>g.players);if(ids.length!==4||new Set(ids).size!==4)throw Error('Distribution missing or duplicated participants');if(result.groups.filter(g=>g.sources.length).some(g=>g.players.length))throw Error('Downstream groups prematurelyfilled');
+ page.once('dialog',d=>d.dismiss());await sort.click();if(await dialog.count())throw Error('Redraw started after declining confirmation');
+ if(errors.length)throw Error(errors.join('\n'));console.log('PASS: disabled background hover, progress animation before reveal, cancellation preservesboard, unique assignment after completion');
+}finally{await browser.close()}
+

@@ -1,0 +1,55 @@
+.participant-draw-overlay{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:22px;background:radial-gradient(ellipse at 50% 60%,#a66f8a28,transparent 65%),#160e1ad9;backdrop-filter:blur(9px);color:#422d3b}
+.participant-draw-card{position:relative;isolation:isolate;width:min(560px,100%);max-height:calc(100dvh - 44px);padding:32px 40px 30px;filter:drop-shadow(5px 8px 0 #12091938) drop-shadow(0 16px 30px #0004);text-align:center;animation:participant-draw-arrive .38s cubic-bezier(.2,.8,.2,1) both}
+.participant-draw-card:before{content:'';position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(13deg,#7a573609 0 1px,transparent 1px 5px),radial-gradient(ellipse at 5% 5%,#f2cfd970,transparent 60%),linear-gradient(125deg,#fff3de,#eee0c6);border:1px solid #d7bd97;clip-path:polygon(1% 0,9% 1%,18% 0,28% 1%,39% 0,49% 1%,60% 0,70% 1%,80% 0,90% 1%,99% 0,100% 11%,99% 22%,100% 34%,99% 46%,100% 58%,99% 70%,100% 83%,99% 99%,90% 100%,80% 99%,69% 100%,59% 99%,48% 100%,37% 99%,27% 100%,17% 99%,7% 100%,0 99%,1% 88%,0 75%,1% 62%,0 49%,1% 37%,0 24%,1% 13%)}
+.participant-draw-card:after{content:'';position:absolute;left:calc(50% - 56px);top:-10px;width:112px;height:27px;background:#cc8daaa6;transform:rotate(-5deg);clip-path:polygon(2% 0,100% 3%,96% 30%,100% 60%,97% 100%,0 96%,4% 64%,0 32%);pointer-events:none}
+.participant-draw-card .participant-draw-cancel{position:absolute;right:14px;top:14px;display:grid;place-items:center;min-width:40px;width:40px;height:40px;padding:9px;border:0;border-radius:50%;background:#ad8c8540;color:#715061;box-shadow:none;transition:background .2s,transform .2s}
+.participant-draw-card .participant-draw-cancel:hover{background:#e5bad0;color:#382333;transform:rotate(8deg)}
+.participant-draw-card .participant-draw-cancel:focus-visible{outline:2px solid #b96a96;outline-offset:3px}
+.participant-draw-kicker{display:block;margin:0 25px 12px;font:700 9px/1.4 'Courier New',monospace;letter-spacing:1.7px;color:#a06487}
+.participant-draw-card h2{margin:0 0 8px;font:400 clamp(25px,4.5vw,32px)/1.18 'Berkshire Swash',Georgia,serif;letter-spacing:-.3px;color:#422b3c}
+.participant-draw-card .participant-draw-description{margin:0;font:12px/1.5 'Segoe UI',sans-serif;color:#907082}
+.participant-draw-art{position:relative;width:100%;margin:9px auto 6px}
+.participant-draw-bag{display:block;width:100%;height:auto;max-height:300px;overflow:visible}
+.participant-draw-count{position:absolute;bottom:6px;left:50%;z-index:2;transform:translateX(-50%) rotate(-2deg);display:inline-block;white-space:nowrap;padding:5px 12px;background:#53374b;color:#fff0d4;font:700 10px/1.2 'Courier New',monospace;box-shadow:2px 2px 0 #c8a27655;clip-path:polygon(0 3%,98% 0,100% 92%,2% 100%)}
+.participant-draw-sack{transform-box:fill-box;transform-origin:50% 85%;animation:participant-draw-sack-settle 1.05s ease-in-out infinite}
+.participant-draw-ticket{transform-box:fill-box;transform-origin:50% 85%;animation:participant-draw-ticket 1.15s var(--ticket-delay,0s) ease-in-out infinite}
+.participant-draw-phase-1 .participant-draw-sack{animation:participant-draw-sack-shake .72s ease-in-out infinite}
+.participant-draw-phase-1 .participant-draw-ticket{animation-duration:.78s}
+.participant-draw-phase-2 .participant-draw-sack{animation:participant-draw-sack-settle 1.4s ease-in-out infinite}
+.participant-draw-phase-2 .participant-draw-ticket{animation-duration:1.4s}
+.participant-draw-doodle{opacity:.8}
+.participant-draw-progress-copy{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:2px}
+.participant-draw-card .participant-draw-phase{margin:0;text-align:left;font:600 13px/1.3 'Segoe UI',sans-serif;color:#644356}
+.participant-draw-percent{display:block;font:700 22px/1.2 Georgia,serif;color:#8f5678;font-variant-numeric:tabular-nums}
+.participant-draw-percent small{font:700 12px/1 'Segoe UI',sans-serif;margin-left:2px}
+.participant-draw-progress{height:12px;overflow:hidden;padding:2px;border:1px solid #c6a99e;border-radius:999px;background:#c8b0ac40;box-shadow:inset 0 1px 3px #5b35431a;margin-top:10px}
+.participant-draw-progress>span{position:relative;display:block;width:100%;height:100%;border-radius:999px;background:linear-gradient(90deg,#b4779a,#d6a1b9 65%,#deb978);transform-origin:left center;will-change:transform;box-shadow:0 0 8px #b77b9b55;transition:transform 35ms linear}
+.participant-draw-progress>span:after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,transparent 20%,#fff5dc66 50%,transparent 80%);transform:translateX(-100%);animation:participant-draw-progress-glint 1.8s ease-in-out infinite}
+.participant-draw-steps{display:flex;justify-content:space-between;gap:12px;margin-top:13px;text-align:left}
+.participant-draw-steps>span{display:flex;align-items:center;gap:5px;font:10px/1.3 'Segoe UI',sans-serif;color:#b69d9e}
+.participant-draw-steps i{display:block;flex:none;width:5px;height:5px;background:#c7b1ab;border-radius:50%;transition:background .25s}
+.participant-draw-steps .is-active{color:#8b5b78}
+.participant-draw-steps .is-active i{background:#b3779c;box-shadow:0 0 0 2px #c78bab24}
+[data-theme='dark'] .participant-draw-card:before{background:repeating-linear-gradient(13deg,#fff0d405 0 1px,transparent 1px 5px),radial-gradient(ellipse at 0 0,#8a547a33,transparent 65%),linear-gradient(125deg,#49344c,#2e2235);border-color:#957053}
+[data-theme='dark'] .participant-draw-card .participant-draw-cancel{background:#ae7b9a20;color:#e1b8d1}
+[data-theme='dark'] .participant-draw-card .participant-draw-cancel:hover{background:#78536f;color:#fff0dc}
+[data-theme='dark'] .participant-draw-kicker{color:#dca8c8}
+[data-theme='dark'] .participant-draw-card h2{color:#fff0d7}
+[data-theme='dark'] .participant-draw-card .participant-draw-description{color:#c3a5b8}
+[data-theme='dark'] .participant-draw-count{background:#e6bdd1;color:#382737;box-shadow:2px 2px 0 #0e091633}
+[data-theme='dark'] .participant-draw-card .participant-draw-phase{color:#ead1df}
+[data-theme='dark'] .participant-draw-percent{color:#e7b3cf}
+[data-theme='dark'] .participant-draw-progress{background:#160d2355;border-color:#88627b}
+[data-theme='dark'] .participant-draw-progress>span{background:linear-gradient(90deg,#b579a1,#e0abc8 65%,#e7c789)}
+[data-theme='dark'] .participant-draw-steps>span{color:#8e7288}
+[data-theme='dark'] .participant-draw-steps .is-active{color:#dca9c8}
+[data-theme='dark'] .participant-draw-steps .is-active i{background:#dea5c8}
+@keyframes participant-draw-arrive{from{opacity:0;transform:translateY(14px) scale(.96) rotate(-1deg)}to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes participant-draw-sack-settle{0%,100%{transform:rotate(-.8deg)}50%{transform:rotate(.8deg)}}
+@keyframes participant-draw-sack-shake{0%,100%{transform:translate(0,0) rotate(-2.6deg)}25%{transform:translate(5px,-3px) rotate(2deg)}50%{transform:translate(-3px,1px) rotate(-1.6deg)}75%{transform:translate(3px,-2px) rotate(2.6deg)}}
+@keyframes participant-draw-ticket{0%,100%{transform:translateY(2px) rotate(0)}40%{transform:translateY(calc(var(--ticket-lift,16px)*-1)) rotate(var(--ticket-turn,5deg))}70%{transform:translateY(-3px) rotate(calc(var(--ticket-turn,5deg)*-.4))}}
+@keyframes participant-draw-progress-glint{0%,15%{transform:translateX(-100%)}85%,100%{transform:translateX(100%)}}
+@media(max-width:480px){.participant-draw-overlay{padding:18px}.participant-draw-card{max-height:calc(100dvh - 36px);padding:30px 23px 25px}.participant-draw-kicker{font-size:8px;letter-spacing:1px;margin-bottom:11px}.participant-draw-card h2{font-size:27px}.participant-draw-card .participant-draw-description{font-size:11px}.participant-draw-card .participant-draw-cancel{right:8px;top:9px;width:36px;height:36px;min-width:36px}.participant-draw-art{margin:8px auto}.participant-draw-count{font-size:9px;bottom:1px}.participant-draw-card .participant-draw-phase{font-size:12px}.participant-draw-steps{gap:7px}.participant-draw-steps>span{font-size:9px;gap:4px}.participant-draw-percent{font-size:21px}}
+@media(max-height:650px){.participant-draw-overlay{padding:16px}.participant-draw-card{max-height:calc(100dvh - 32px);padding:25px 32px 22px}.participant-draw-kicker{margin-bottom:9px;font-size:8px}.participant-draw-card h2{font-size:27px}.participant-draw-bag{max-height:230px}.participant-draw-art{margin:5px auto}.participant-draw-count{bottom:0}.participant-draw-progress-copy{margin-top:8px}.participant-draw-steps{margin-top:10px}}
+@media(max-height:480px){.participant-draw-card{width:min(580px,100%);padding:20px 30px}.participant-draw-kicker{font-size:7px;letter-spacing:1px;margin-bottom:6px}.participant-draw-card h2{font-size:24px;margin-bottom:5px}.participant-draw-card .participant-draw-description{font-size:10px}.participant-draw-bag{max-height:145px}.participant-draw-art{margin:0 auto 3px}.participant-draw-count{font-size:8px;padding:4px 9px}.participant-draw-progress-copy{margin-top:9px}.participant-draw-percent{font-size:18px}.participant-draw-card .participant-draw-phase{font-size:11px}.participant-draw-progress{margin-top:7px;height:10px}.participant-draw-steps{margin-top:8px}.participant-draw-steps>span{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.participant-draw-card,.participant-draw-sack,.participant-draw-ticket,.participant-draw-progress>span:after{animation:none!important}.participant-draw-progress>span,.participant-draw-card .participant-draw-cancel{transition:none}.participant-draw-card .participant-draw-cancel:hover{transform:none}}

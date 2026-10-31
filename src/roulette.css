@@ -1,0 +1,59 @@
+﻿/* Reference collage: fixed design coordinates, scaled to the available viewport. */
+.reference-music-overlay{padding:8px;background:#110f10d6;backdrop-filter:blur(9px);z-index:30}
+.scrap-roulette{position:relative;width:min(98vw,calc((100dvh - 16px)*1.5));aspect-ratio:3/2;flex:none;outline:0;overflow:hidden;border:0;padding:0;background:#211d1c;box-shadow:0 20px 100px #0007}
+.roulette-stage{position:absolute;inset:0 auto auto 0;width:1536px;height:1024px;transform-origin:0 0;color:#201b1a;font-family:Arial,sans-serif}
+.roulette-collage-base{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.roulette-a11y{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.scrap-close{position:absolute;left:1354px;top:54px;width:59px;height:59px;border:0;border-radius:50%;background:transparent;color:#251f1c;padding:0;box-shadow:none}
+.scrap-close:hover{background:#e6b5cb66;color:#211919;transform:rotate(8deg)}
+.scrap-current{position:absolute;left:600px;top:57px;width:340px;text-align:center;transform:rotate(-2deg);color:#221d1a}
+.scrap-current>span{display:block;font:bold 23px/1.3 'Courier New',monospace;margin-bottom:15px}
+.scrap-current>strong{display:flex;align-items:center;justify-content:center;height:37px;color:#f2e3cb;font:700 20px/1.1 'Courier New',monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 5px}
+.scrap-filters{position:absolute;left:479px;top:207px;width:600px}
+.scrap-filters>p{font:700 15px/1.5 'Courier New',monospace;letter-spacing:.2px;text-align:center;margin:0 0 15px;color:#2e241f}
+.scrap-filters>div{display:flex;gap:11px}
+.scrap-filters button{position:relative;width:142px;height:62px;padding:10px 8px;gap:8px;flex:none;color:#28211e;background:linear-gradient(110deg,#f0e3cecc,#e6d6c1cc);border:1px solid #bea68d;border-radius:5px;box-shadow:1px 3px 0 #9a7e5740;font:bold 17px Arial,sans-serif;transform:rotate(-1deg)}
+.scrap-filters button:nth-child(even){transform:rotate(.7deg)}
+.scrap-filters button:before{content:'';position:absolute;inset:4px;border:1px dashed #bca18a66;border-radius:2px;pointer-events:none}
+.scrap-filters button.selected{background:linear-gradient(110deg,#d496b5,#c17b9e);border:2px solid #ae6a8c;color:#211b1e;box-shadow:0 0 0 2px #ebd1d8,2px 4px 0 #936b7550}
+.scrap-filters button.selected:before{border-color:#f6dfdfbb}
+.scrap-filters button:hover{background:#deb0c5;color:#21191d;transform:translateY(-2px)}
+.scrap-filters button:disabled{opacity:.75}
+.scrap-platter{position:absolute;left:496px;top:302px;width:558px;height:478px;filter:drop-shadow(3px 8px 5px #0008)}
+.scrap-record{display:block;width:100%;height:100%;transition:transform 5.2s cubic-bezier(.22,.015,.08,1);transform-origin:50% 50%;border-radius:50%;will-change:transform}
+.scrap-tonearm{position:absolute;left:925px;top:300px;width:250px;height:440px;pointer-events:none;filter:drop-shadow(3px 4px 2px #0009)}
+.scrap-arm-moving{transform-origin:150px 55px}
+.is-spinning .scrap-arm-moving{animation:scrap-needle-drop 5.2s ease-in-out both}
+.scrap-spin{position:absolute;left:560px;top:790px;width:439px;height:72px;border:0;border-radius:25px;background:transparent;color:#efdfc6;font:bold 21px Arial,sans-serif;padding:12px 25px;gap:23px;box-shadow:none}
+.scrap-spin>span{flex:1;white-space:nowrap}
+.scrap-spin:hover{background:#be82a830;color:#fff0d6;box-shadow:inset 0 0 0 2px #dec19b}
+.scrap-spin:disabled{opacity:.85}
+.is-spinning .scrap-spin-icon{animation:scrap-spin-icon 1.2s linear infinite}
+.scrap-target{position:absolute;left:555px;top:911px;width:460px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:10px;font:13px 'Courier New',monospace;color:#453026;background:#f0e2cce8;padding:5px 10px;box-shadow:1px 2px 3px #35231d33;transform:rotate(-1deg)}
+.scrap-target select{padding:5px 9px;min-width:180px;max-width:260px;background:#f7eddb;color:#3d2d2d;border:1px solid #ac8c75;border-radius:2px;font:13px Arial,sans-serif}
+.scrap-roulette button:focus-visible,.scrap-target select:focus-visible{outline:3px solid #a74a7e;outline-offset:4px}
+@keyframes scrap-needle-drop{0%{transform:rotate(0deg)}9%{transform:rotate(-15deg)}23%{transform:rotate(2deg)}29%,86%{transform:rotate(0deg)}93%{transform:rotate(.6deg)}100%{transform:rotate(0deg)}}
+@keyframes scrap-spin-icon{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.scrap-record{transition:none;will-change:auto}.is-spinning .scrap-arm-moving,.is-spinning .scrap-spin-icon{animation:none}}
+
+.scrap-record{transition:none;will-change:auto}.scrap-record-rotor{transform-origin:280px 280px;transition:transform 5.2s cubic-bezier(.22,.015,.08,1);will-change:transform}@media(prefers-reduced-motion:reduce){.scrap-record-rotor{transition:none;will-change:auto}}
+
+/* A circular record without perspective compression; the stylus still targets 130°. */
+.scrap-platter{left:536px;top:302px;width:478px;height:478px}.scrap-tonearm{left:894px;top:293px}
+/* Hover waves and Lucide SVG notes are decorative and never intercept clicks. */
+.music-launch{position:relative;isolation:isolate;overflow:visible}
+.music-button-fx{position:absolute;inset:0;pointer-events:none;border-radius:inherit;z-index:0;display:block;flex:none!important;white-space:normal!important}
+.scrap-spin>.music-button-fx{flex:none}.music-wave{position:absolute;inset:-2px;border:2px solid #e3a5c7;border-radius:inherit;opacity:0;transform:scale(1)}
+.music-note{position:absolute;bottom:35%;display:block;color:#f0b7d5;opacity:0;transform:translate(0,0) rotate(0);filter:drop-shadow(0 2px 1px #2c172d66)}
+.music-note:nth-child(odd){color:#f1cf91}
+:is(.music-launch,.scrap-spin):is(:hover,:focus-visible):not(:disabled) .music-wave{animation:music-button-wave 1.8s ease-out infinite}
+:is(.music-launch,.scrap-spin):is(:hover,:focus-visible):not(:disabled) .music-wave-late{animation-delay:.65s}
+:is(.music-launch,.scrap-spin):is(:hover,:focus-visible):not(:disabled) .music-note{animation:music-note-rise 2s var(--note-delay) ease-out infinite}
+@keyframes music-button-wave{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.38,1.8)}}
+@keyframes music-note-rise{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.65)}18%{opacity:1}80%{opacity:.75}100%{opacity:0;transform:translate(var(--note-x),-125px) rotate(var(--note-tilt)) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){:is(.music-launch,.scrap-spin):is(:hover,:focus-visible):not(:disabled) :is(.music-wave,.music-note){animation:none}.music-button-fx{display:none}}
+/* Two clear pulses identify the winning sector before the result appears. */
+.record-sector.is-selected{animation:selected-song-flash .6s ease-in-out 2}
+.record-sector.is-selected>path{stroke:#ffe2a0;stroke-width:4}
+@keyframes selected-song-flash{0%,100%{opacity:1;filter:brightness(1)}35%{opacity:.22;filter:brightness(1.65)}70%{opacity:1;filter:brightness(1.35)}}
+@media(prefers-reduced-motion:reduce){.record-sector.is-selected{animation:none}.record-sector.is-selected>path{stroke:#ffe2a0;stroke-width:5}}

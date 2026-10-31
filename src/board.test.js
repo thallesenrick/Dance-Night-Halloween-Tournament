@@ -13,10 +13,22 @@ test('sorteio recusa falta de vagas e lista vazia sem alterar o mapa',()=>{const
 import {createRoundOf16Board} from './board.js';
 test('modelo da referência gera oito vagas e todas as ligações até o campeão',()=>{
  let b=createRoundOf16Board();assert.equal(b.groups.length,12);assert.equal(b.groups.filter(g=>!g.sources.length).length,8);assert.equal(b.groups.reduce((sum,g)=>sum+g.sources.length,0),11);assert.equal(new Set(b.groups.map(g=>g.id)).size,12);
- const roots=b.groups.filter(g=>!g.sources.length);assert.equal(roots.filter(g=>g.x===90).length,4);assert.equal(roots.filter(g=>g.x===1130).length,4);
+ const roots=b.groups.filter(g=>!g.sources.length);assert.equal(roots.filter(g=>g.x===90).length,4);assert.equal(roots.filter(g=>g.x===1010).length,4);
  b=distributePlayers(b,Array.from({length:8},(_,i)=>`p${i}`),()=>.2);
  for(const g of b.groups.filter(g=>!g.sources.length))b=boardWinner(b,g.id,g.players[0]);
  for(const index of [8,9,10])b=boardWinner(b,b.groups[index].id,b.groups[index].players[0]);
  assert.equal(b.groups[8].players.length,4);assert.equal(b.groups[9].players.length,4);assert.equal(b.groups[10].players.length,2);assert.equal(b.groups[11].players.length,1);
  assert.notEqual(createRoundOf16Board().groups[0].id,roots[0].id);
+});
+
+
+import {isChampionshipMatch} from './board.js';
+test('reconhece a final e o slot de campeão sem comemorar título em vagas ou semifinais',()=>{
+ const board=createRoundOf16Board();
+ for(const group of board.groups.slice(0,10))assert.equal(isChampionshipMatch(board,group.id),false);
+ assert.equal(isChampionshipMatch(board,board.groups[10].id),true);
+ assert.equal(isChampionshipMatch(board,board.groups[11].id),true);
+ assert.equal(isChampionshipMatch(board,'missing'),false);
+ const single=boardGroup('Vaga avulsa');assert.equal(isChampionshipMatch({groups:[single]},single.id),false);
+ const direct=structuredClone(board);direct.groups=direct.groups.slice(0,11);assert.equal(isChampionshipMatch(direct,direct.groups[10].id),true);
 });

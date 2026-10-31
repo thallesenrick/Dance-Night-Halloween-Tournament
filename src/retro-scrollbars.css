@@ -1,0 +1,53 @@
+﻿/* Native retro scrollbars: cream/rose bevels, stippled tracks and pixel steppers. */
+:root{
+ --retro-scroll-face:#d9c6cf;
+ --retro-scroll-hover:#e5bed4;
+ --retro-scroll-track:#f0e7d9;
+ --retro-scroll-dot:#d4c7c6;
+ --retro-scroll-light:#fff8eb;
+ --retro-scroll-shadow:#94798b;
+ --retro-scroll-edge:#55404e;
+ --retro-scroll-arrow-up:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cpath fill='%233c2c38' d='M1 5V4H2V3H3V2H5V3H6V4H7V5Z'/%3E%3C/svg%3E");
+ --retro-scroll-arrow-down:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cpath fill='%233c2c38' transform='rotate(180 4 4)' d='M1 5V4H2V3H3V2H5V3H6V4H7V5Z'/%3E%3C/svg%3E");
+ --retro-scroll-arrow-left:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cpath fill='%233c2c38' transform='rotate(-90 4 4)' d='M1 5V4H2V3H3V2H5V3H6V4H7V5Z'/%3E%3C/svg%3E");
+ --retro-scroll-arrow-right:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cpath fill='%233c2c38' transform='rotate(90 4 4)' d='M1 5V4H2V3H3V2H5V3H6V4H7V5Z'/%3E%3C/svg%3E");
+}
+:root[data-theme='dark']{
+ --retro-scroll-face:#684d65;
+ --retro-scroll-hover:#956889;
+ --retro-scroll-track:#2b2231;
+ --retro-scroll-dot:#443247;
+ --retro-scroll-light:#b995ae;
+ --retro-scroll-shadow:#392b40;
+ --retro-scroll-edge:#17121d;
+ --retro-scroll-arrow-up:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cpath fill='%23f7e8da' d='M1 5V4H2V3H3V2H5V3H6V4H7V5Z'/%3E%3C/svg%3E");
+ --retro-scroll-arrow-down:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cpath fill='%23f7e8da' transform='rotate(180 4 4)' d='M1 5V4H2V3H3V2H5V3H6V4H7V5Z'/%3E%3C/svg%3E");
+ --retro-scroll-arrow-left:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cpath fill='%23f7e8da' transform='rotate(-90 4 4)' d='M1 5V4H2V3H3V2H5V3H6V4H7V5Z'/%3E%3C/svg%3E");
+ --retro-scroll-arrow-right:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Cpath fill='%23f7e8da' transform='rotate(90 4 4)' d='M1 5V4H2V3H3V2H5V3H6V4H7V5Z'/%3E%3C/svg%3E");
+}
+/* Firefox keeps its native mechanics with the matching two-color palette. */
+:root,:root *{scrollbar-width:auto;scrollbar-color:var(--retro-scroll-face) var(--retro-scroll-track)}
+:root :is(.party-canvas-scroll,.camera-filters){scrollbar-width:auto;scrollbar-color:var(--retro-scroll-face) var(--retro-scroll-track)}
+@supports selector(::-webkit-scrollbar){
+ /* Non-auto standard properties override WebKit parts in current Chromium. */
+ :root,:root *{scrollbar-width:auto!important;scrollbar-color:auto!important}
+ ::-webkit-scrollbar{width:15px;height:15px;background:var(--retro-scroll-track);cursor:url('/cursors/retro-arrow.svg') 2 2,default}
+ ::-webkit-scrollbar-track{background-color:var(--retro-scroll-track);background-image:repeating-conic-gradient(var(--retro-scroll-dot) 0% 25%,transparent 0% 50%);background-size:2px 2px;border:1px solid var(--retro-scroll-shadow);border-radius:0;box-shadow:inset 1px 1px 0 var(--retro-scroll-edge)}
+ ::-webkit-scrollbar-thumb{min-height:28px;min-width:28px;border:1px solid var(--retro-scroll-edge);border-radius:0;background:var(--retro-scroll-face);box-shadow:inset 1px 1px 0 var(--retro-scroll-light),inset -1px -1px 0 var(--retro-scroll-shadow);cursor:url('/cursors/retro-hand.svg') 12 2,pointer}
+ ::-webkit-scrollbar-thumb:hover{background:var(--retro-scroll-hover)}
+ ::-webkit-scrollbar-thumb:active{box-shadow:inset 1px 1px 0 var(--retro-scroll-shadow),inset -1px -1px 0 var(--retro-scroll-light)}
+ ::-webkit-scrollbar-button{display:none}
+ ::-webkit-scrollbar-button:single-button{display:block;width:15px;height:15px;border:1px solid var(--retro-scroll-edge);border-radius:0;background-color:var(--retro-scroll-face);background-position:center;background-repeat:no-repeat;background-size:8px 8px;box-shadow:inset 1px 1px 0 var(--retro-scroll-light),inset -1px -1px 0 var(--retro-scroll-shadow);cursor:url('/cursors/retro-hand.svg') 12 2,pointer}
+ ::-webkit-scrollbar-button:single-button:vertical:decrement{background-image:var(--retro-scroll-arrow-up)}
+ ::-webkit-scrollbar-button:single-button:vertical:increment{background-image:var(--retro-scroll-arrow-down)}
+ ::-webkit-scrollbar-button:single-button:horizontal:decrement{background-image:var(--retro-scroll-arrow-left)}
+ ::-webkit-scrollbar-button:single-button:horizontal:increment{background-image:var(--retro-scroll-arrow-right)}
+ ::-webkit-scrollbar-button:single-button:hover{background-color:var(--retro-scroll-hover)}
+ ::-webkit-scrollbar-button:single-button:active{background-position:calc(50% + 1px) calc(50% + 1px);box-shadow:inset 1px 1px 0 var(--retro-scroll-shadow)}
+ ::-webkit-scrollbar-corner{background:var(--retro-scroll-face);border:1px solid var(--retro-scroll-shadow)}
+}
+@media(forced-colors:active){
+ :root,:root *{scrollbar-color:auto!important;scrollbar-width:auto!important}
+ ::-webkit-scrollbar{width:auto;height:auto}
+ ::-webkit-scrollbar-track,::-webkit-scrollbar-thumb,::-webkit-scrollbar-button:single-button,::-webkit-scrollbar-corner{background:revert;border:revert;box-shadow:none;forced-color-adjust:auto}
+}

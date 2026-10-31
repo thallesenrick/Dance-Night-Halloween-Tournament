@@ -1,0 +1,11 @@
+﻿/* A broad capsule, matching the invitation reference. */
+.collage-cover .cover-start{width:clamp(280px,32vw,420px);max-width:calc(100vw - 90px);height:clamp(80px,6.5vw,94px);min-height:80px;border-radius:999px;padding:18px 32px;gap:24px;flex-direction:row;background:#ef7429;box-shadow:4px 7px 0 #37190f22}
+.collage-cover .cover-button-label{font-size:clamp(23px,2.1vw,29px);line-height:1.15;white-space:nowrap;word-spacing:2px;flex:none}
+.collage-cover .cover-button-arrow{position:static;width:30px;height:30px;flex:0 0 30px;opacity:1;transform:none}
+.collage-cover .cover-start:is(:hover,:focus-visible){background:#171313;box-shadow:0 14px 38px #35180d35}
+.collage-cover .cover-start:is(:hover,:focus-visible) .cover-button-label{transform:none}
+@media(max-width:700px){.collage-cover .cover-start{width:290px;max-width:calc(100vw - 100px);height:80px;min-height:80px;padding:16px 22px;gap:16px}.collage-cover .cover-button-label{font-size:23px}.collage-cover .cover-button-arrow{width:26px;height:26px;flex-basis:26px}}
+@media(max-width:360px){.collage-cover .cover-start{max-width:calc(100vw - 85px);padding:15px 16px;gap:11px}.collage-cover .cover-button-label{font-size:21px}}
+
+@media(max-width:360px){.collage-cover .cover-start{padding:15px 12px;gap:8px}.collage-cover .cover-button-label{font-size:20px}.collage-cover .cover-button-arrow{width:24px;height:24px;flex-basis:24px}}
+

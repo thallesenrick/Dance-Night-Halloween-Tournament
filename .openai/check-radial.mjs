@@ -1,0 +1,9 @@
+﻿import {chromium} from 'playwright-core';
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});const page=await browser.newPage({viewport:{width:1366,height:768}});
+try{await page.goto('http://127.0.0.1:5174/');await page.getByRole('button',{name:'Começar o torneio',exact:true}).click();const toggle=page.getByRole('switch',{name:'Modo escuro',exact:true});await toggle.click();
+ await page.waitForFunction(()=>parseFloat(getComputedStyle(document.documentElement,'::view-transition-new(root)').getPropertyValue('--theme-reveal-radius'))>30,{timeout:5000});
+ const result=await page.evaluate(()=>({active:document.documentElement.classList.contains('theme-transitioning'),radius:getComputedStyle(document.documentElement,'::view-transition-new(root)').getPropertyValue('--theme-reveal-radius'),mask:getComputedStyle(document.documentElement,'::view-transition-new(root)').maskImage}));console.log('MID',result);await page.screenshot({path:'.openai/roulette-qa/radial-mid.png'});
+ await page.locator('.bat-burst').waitFor();await page.waitForTimeout(2200);console.log('BATS',await page.locator('.bat-flight').evaluateAll(ns=>ns.map(n=>{const r=n.getBoundingClientRect();return {y:r.y,x:r.x,opacity:getComputedStyle(n).opacity}})));await page.screenshot({path:'.openai/roulette-qa/natural-bats.png'});
+ console.log('FINAL',await page.evaluate(()=>({active:document.documentElement.classList.contains('theme-transitioning'),theme:document.documentElement.dataset.theme,slider:getComputedStyle(document.querySelector('.theme-toggle-thumb')).transform})));
+ await page.locator('.bat-burst').waitFor({state:'detached',timeout:6000});await toggle.click();await page.locator('.sparkle-burst').waitFor();await page.waitForTimeout(800);await page.screenshot({path:'.openai/roulette-qa/light-sparkles.png'});
+}finally{await browser.close()}

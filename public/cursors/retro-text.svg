@@ -1,0 +1,1 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" shape-rendering="crispEdges"><defs><path id="beam" d="M10 3H14L16 5L18 3H22V5H18V27H22V29H18L16 27L14 29H10V27H14V5H10Z"/></defs><use href="#beam" fill="#fffdf7" stroke="#fffdf7" stroke-width="2"/><use href="#beam" fill="#17131a"/></svg>

@@ -9,14 +9,16 @@
     "test": "node --test src/tournament.test.js src/board.test.js"
   },
   "dependencies": {
+    "@mediapipe/tasks-vision": "^1.2.0",
+    "framer-motion": "^12.0.0",
+    "lucide-react": "^0.468.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "framer-motion": "^12.0.0",
-    "lucide-react": "^0.468.0"
+    "three": "^0.187.0"
   },
   "devDependencies": {
-    "vite": "^6.0.0",
+    "@tailwindcss/vite": "^4.0.0",
     "tailwindcss": "^4.0.0",
-    "@tailwindcss/vite": "^4.0.0"
+    "vite": "^6.0.0"
   }
 }

@@ -1,0 +1,8 @@
+﻿# Roulette collage asset
+
+Asset: `public/roulette-collage-base.png`.
+Created with the built-in ImageGen tool, using the user's supplied screenshot as the edit target.
+
+Final prompt:
+
+Precise UI asset edit. Edit target: the attached 1536x1024 reference screenshot. Produce exactly the SAME 1536x1024 composition, all outer scrapbook collage decorations, title 'Roleta de Músicas' top left, side cats, skeleton, disco balls, paper textures, borders, black turntable body and its bottom controls, and dark blurred background locked in place. Change ONLY the following elements to make a clean interactive web background: (1) Remove the entire 3 participant filter buttons and instruction line at x480..1070 y205..308, replace them with matching plain cream worn paper texture. (2) In the top current-song paper at x560..1000 y32..190 keep the torn paper, small vinyl illustration and waveform, but remove the text 'Música atual:' and remove 'Daft Punk - Get Lucky', leave the BLACK STRIP blank. (3) Remove the entire circular roulette vinyl from x493..1047 y303..783 and remove the tonearm at x944..1102 y312..719, replacing these areas with the original turntable's blank scratched black-brown surface, no circular disc, no platter ring, no spindle, no needle. Preserve body boundaries. (4) Keep the large purple rounded button x555..1004 y784..870 and its border, but erase all icons and text inside the button to blank purple. (5) Remove just X close icon at top-right, keep its small torn cream paper patch. Do NOT add any new typography, UI, art or elements. Keep all remaining collage art faithful to original, same coordinates. This will be used behind live interactive UI; blank dynamic regions are essential.

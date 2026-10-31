@@ -47,12 +47,22 @@ export function distributePlayers(board,ids,random=Math.random){
 }
 // Preset follows the supplied eight-entry, two-group reference layout.
 export function createRoundOf16Board(){
- const rows=[210,470,730,990];
+ const rows=[40,220,400,580];
  const left=rows.map((y,i)=>boardGroup(`Vaga ${i+1}`,90,y));
- const right=rows.map((y,i)=>boardGroup(`Vaga ${i+5}`,1130,y));
- const a=boardGroup('Chave A',350,460),b=boardGroup('Chave B',870,460);
+ const right=rows.map((y,i)=>boardGroup(`Vaga ${i+5}`,1010,y));
+ const a=boardGroup('Chave A',320,220),b=boardGroup('Chave B',780,220);
  a.sources=left.map(g=>g.id);b.sources=right.map(g=>g.id);
- const final=boardGroup('Final',610,460);final.sources=[a.id,b.id];
- const champion=boardGroup('Campeão',610,1050);champion.sources=[final.id];
+ const final=boardGroup('Final',550,220);final.sources=[a.id,b.id];
+ const champion=boardGroup('Campeão',550,740);champion.sources=[final.id];
  return syncBoard({groups:[...left,...right,a,b,final,champion]});
+}
+
+
+// The last competitive match may feed a single display slot for the champion.
+export function isChampionshipMatch(board,id){
+ const group=board.groups.find(g=>g.id===id);
+ if(!group)return false;
+ const destinations=board.groups.filter(g=>g.sources.includes(id));
+ if(!destinations.length)return group.sources.length>0;
+ return destinations.length===1&&destinations[0].sources.length===1&&!board.groups.some(g=>g.sources.includes(destinations[0].id));
 }

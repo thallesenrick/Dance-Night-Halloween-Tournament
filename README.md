@@ -14,3 +14,5 @@ Execute `npm install` e `npm run dev`, depois abra o endereço do Vite.
 O visual usa colagens em papel, fotos tipo polaroid, fitas, estrelas e disco ball. Fotos, nomes e mapa ficam somente no navegador. A câmera exige localhost/HTTPS e autorização do navegador.
 
 `npm test` verifica a lógica de conexões, ciclos, sorteio e propagação. `npm run build` gera dist.
+
+Os acessórios da câmera usam Three.js para renderização 3D e MediaPipe Face Landmarker para acompanhamento local de um rosto. O modelo oficial fica em `public/face-effects/face_landmarker.task`; os arquivos WASM em `public/face-effects/wasm` foram copiados da versão instalada de `@mediapipe/tasks-vision`. Ao atualizar essa dependência, atualize também esses arquivos WASM. O vídeo é processado no navegador. Escolha Sem efeito para fotografar caso o rastreamento não esteja disponível.
