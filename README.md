@@ -17,13 +17,13 @@ Abra o endereço informado pelo Vite no navegador.
 
 1. Clique em **Começar o torneio**. Na barra de ferramentas, **Selecionar** move os cards; **Adicionar slot** cria espaços ao clicar no mapa ou arrastar o botão; **Conectar** liga as fases. **Criar torneio** gera oito vagas iniciais, duas chaves, final e campeão.
 2. Ligue a saída à direita de um card à entrada à esquerda de outro, por clique ou arraste. A conexão facilita a seleção por proximidade. Arraste o fundo para navegar e use o zoom ou **Ajustar à tela**.
-3. Na barra lateral, adicione participantes com nome, emojis e foto pela câmera ou por upload. A câmera oferece acessórios 3D animados. A lista pode ser recolhida e expandida.
+3. Na barra lateral, adicione participantes com nome, emojis e foto pela câmera ou por upload. A câmera oferece acessórios 3D animados. Ao recolher a lista, as ferramentas de cima também são escondidas e fica apenas o atalho de início; o botão lateral expande os dois novamente.
 4. Clique em **Sortear participantes** para acompanhar a animação dos papéis no saco. Cada pessoa ocupa uma vaga inicial, sem repetição; são necessárias vagas suficientes. Um novo sorteio pede confirmação antes de substituir a distribuição.
 5. Clique nas fotos para marcar ou desmarcar vencedores. As conexões encaminham quem avança; corrigir um resultado atualiza as fases seguintes. A comemoração do campeão, com foto e confetes, permanece até ser fechada.
 
 ## Roleta de músicas
 
-Abra **Selecionar próxima música** e escolha o filtro de **1, 2, 3 ou 4 pessoas**. O disco gira, destaca a faixa escolhida duas vezes e abre o resultado por quatro segundos.
+Abra **Selecionar próxima música** e escolha o filtro de **1, 2, 3 ou 4 pessoas**. O disco gira com som de catraca que desacelera junto com a animação, destaca a faixa escolhida duas vezes e abre o resultado por quatro segundos.
 
 O ícone de lápis abre o editor, com abas por quantidade de participantes, busca, adição, edição, exclusão e reordenação. Exclusões e mudanças de ordem são salvas automaticamente. Para adicionar ou editar uma faixa, preencha o formulário e clique em salvar.
 

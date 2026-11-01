@@ -1,0 +1,4 @@
+Tool: built-in image_gen, reference image edit.
+Output: public/voting-scrapbook-bg.png
+
+Prompt: Edit this reference into a clean website background asset, landscape 16:9. Preserve exactly the warm cream textured paper, torn paper edges and lavender graph paper corners, black cat sticker bottom left, martini glass and disco pumpkin bottom right, and hanging mauve/orange disco balls top right. REMOVE ALL typography, ALL four rectangular UI cards with their icons and tape, and the entire purple top header bar with its buttons and text. Fill all removed areas seamlessly with the same cream paper texture. Large clean cream center for real HTML content. No text, no buttons, no cards anywhere. Keep ornaments at the extreme outer edges, not invading the content area. This is a production background texture, not a UI mockup.

@@ -6,6 +6,7 @@ import {loadTournament} from './tournament';
 import {syncBoard,initialBoard} from './board';
 import Tournament from './Tournament.jsx';
 import Cover from './Cover.jsx';
+import Voting from './Voting.jsx';
 import ParticipantModal from './ParticipantModal.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
 import BatBurst from './BatBurst.jsx';
@@ -36,15 +37,15 @@ function App(){
  };
  const themeControl=<ThemeToggle theme={theme} onToggle={toggleTheme} disabled={themeSwitching}/>;
  const [data,setData]=useState(()=>{try{const old=JSON.parse(localStorage.getItem('halloween-v1'));return loadTournament(old)}catch{return empty}});
- const [started,setStarted]=useState(false),[modal,setModal]=useState(false),[notice,setNotice]=useState('');
+ const [started,setStarted]=useState(false),[modal,setModal]=useState(false),[notice,setNotice]=useState(''),[voting,setVoting]=useState(false);
 
  useEffect(()=>{try{localStorage.setItem('halloween-v1',JSON.stringify(data))}catch{setNotice('Memória cheia. Exporte o torneio para preservar os dados.')}},[data]);
  const close=()=>setModal(false);
  const add=participant=>{setData(d=>({...d,players:[...d.players,{...participant,id:createId()}]}));close()};
  const avatar=p=>p?.photo?<img src={p.photo} alt={p.name}/>:<span className="initial">{nameInitial(p?.name)}</span>;
  const begin=()=>setStarted(true);
- const goHome=()=>{close();setStarted(false)};
- return <div className={started?'app sandbox-app':'app welcome-app'}>{!started?<><Cover onStart={begin}/><div className="home-theme-control">{themeControl}</div></>:<main className="sandbox-screen"><Tournament data={data} setData={setData} avatar={avatar} notice={setNotice} onAdd={()=>setModal(true)} onHome={goHome} themeControl={themeControl} theme={theme}/></main>}
+ const goHome=()=>{close();setStarted(false);setVoting(false)};
+ return <div className={started||voting?'app sandbox-app':'app welcome-app'}>{voting?<Voting players={data.players} avatar={avatar} onAdd={()=>setModal(true)} onHome={goHome} themeControl={themeControl} notice={setNotice}/>:!started?<><Cover onStart={begin} onVote={()=>setVoting(true)}/><div className="home-theme-control">{themeControl}</div></>:<main className="sandbox-screen"><Tournament data={data} setData={setData} avatar={avatar} notice={setNotice} onAdd={()=>setModal(true)} onHome={goHome} themeControl={themeControl} theme={theme}/></main>}
  {batBurst&&<BatBurst key={batBurst.id} kind={batBurst.kind} onDone={dismissBats}/>}{notice&&<div className="toast" role="alert">{notice}<button onClick={()=>setNotice('')} aria-label="Fechar aviso"><X/></button></div>}
  {modal&&<ParticipantModal onClose={close} onSave={add}/>}</div>
 }

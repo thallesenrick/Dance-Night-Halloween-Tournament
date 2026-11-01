@@ -58,3 +58,9 @@
  .party-workspace .party-toolbar .home-button{margin-right:1px}
 }
 @media(prefers-reduced-motion:reduce){.theme-toggle .theme-toggle-thumb,.theme-toggle .theme-toggle-track{transition:none}}
+/* The participants toggle also folds the tool strip down to its home shortcut. */
+.party-workspace .party-toolbar .canvas-tools[hidden]{display:none}
+.party-workspace .party-toolbar.is-collapsed{width:max-content;max-width:calc(100% - 20px);padding:8px;gap:0}
+.party-workspace .party-toolbar.is-collapsed .home-button{margin-right:0}
+.party-workspace .party-toolbar.is-collapsed .home-button:after{display:none}
+.party-workspace.is-controls-collapsed .sidebar-expand{top:14px}

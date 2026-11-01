@@ -3,6 +3,7 @@ import {X,Users,Music,Music2,Disc3,RefreshCw,Pencil} from 'lucide-react';
 import {getMusicLibrary,chooseLibrarySong} from './music-library.js';
 import MusicLibraryEditor from './MusicLibraryEditor.jsx';
 import './roulette.css';
+import {startRouletteSound} from './roulette-sound.js';
 const MARKER_ANGLE=130;
 const SPIN_MS=5200;
 const REVEAL_MS=1200;
@@ -24,11 +25,11 @@ function Tonearm(){return <svg className="scrap-tonearm" viewBox="0 0 250 440" a
 export default function MusicRoulette({data,setData,groups}){
  const [open,setOpen]=useState(false),[count,setCount]=useState(4),[target,setTarget]=useState(''),[spinning,setSpinning]=useState(false),[rotation,setRotation]=useState(0),[chosen,setChosen]=useState(null),[revealing,setRevealing]=useState(null),[scale,setScale]=useState(1),[editing,setEditing]=useState(false);
  const library=useMemo(()=>getMusicLibrary(data.musicLibrary),[data.musicLibrary]),pool=library.filter(song=>song.players===count);
- const dialog=useRef(null),launcher=useRef(null),timer=useRef(null),revealTimer=useRef(null),resultTimer=useRef(null),resultDialog=useRef(null);
+ const dialog=useRef(null),launcher=useRef(null),timer=useRef(null),revealTimer=useRef(null),resultTimer=useRef(null),resultDialog=useRef(null),stopSound=useRef(null);
  const busy=spinning||!!revealing;
  const current=target?groups.find(g=>g.id===target)?.song:data.currentSong;
  const currentLabel=current?`${current.artist} – ${current.title}`:'Qual vai ser o próximo hit?';
- useEffect(()=>()=>{clearTimeout(timer.current);clearTimeout(revealTimer.current);clearTimeout(resultTimer.current)},[]);
+ useEffect(()=>()=>{clearTimeout(timer.current);clearTimeout(revealTimer.current);clearTimeout(resultTimer.current);stopSound.current?.()},[]);
  useEffect(()=>{if(!chosen)return;resultDialog.current?.focus();resultTimer.current=setTimeout(()=>setChosen(null),4000);return()=>{clearTimeout(resultTimer.current);dialog.current?.focus()}},[chosen]);
  useEffect(()=>{if(!open)return;const previous=document.activeElement;dialog.current?.focus();return()=>previous?.focus()},[open]);
  useLayoutEffect(()=>{if(!open)return;const update=()=>setScale(dialog.current.clientWidth/1536);update();const observer=new ResizeObserver(update);observer.observe(dialog.current);return()=>observer.disconnect()},[open]);
@@ -37,8 +38,9 @@ export default function MusicRoulette({data,setData,groups}){
   if(busy||chosen||editing||!pool.length)return;
   const selected=chooseLibrarySong(pool,current);
   const stop=(MARKER_ANGLE-(selected.index+.5)*(360/pool.length)+360)%360;
+  stopSound.current?.();stopSound.current=startRouletteSound(SPIN_MS);
   setRotation(r=>r+2520+((stop-r%360+360)%360));setSpinning(true);
-  timer.current=setTimeout(()=>{const song={...selected.song};setData(d=>({...d,currentSong:song,board:target?{...(d.board||{}),groups:(d.board?.groups||groups).map(g=>g.id===target?{...g,song}:g)}:d.board}));setSpinning(false);setRevealing({index:selected.index,song});revealTimer.current=setTimeout(()=>{setRevealing(null);setChosen(song)},REVEAL_MS)},SPIN_MS);
+  timer.current=setTimeout(()=>{stopSound.current?.();stopSound.current=null;const song={...selected.song};setData(d=>({...d,currentSong:song,board:target?{...(d.board||{}),groups:(d.board?.groups||groups).map(g=>g.id===target?{...g,song}:g)}:d.board}));setSpinning(false);setRevealing({index:selected.index,song});revealTimer.current=setTimeout(()=>{setRevealing(null);setChosen(song)},REVEAL_MS)},SPIN_MS);
  };
  const trap=e=>{if(e.key==='Escape')close();if(e.key==='Tab'){const items=[...dialog.current.querySelectorAll('button:not(:disabled),select:not(:disabled)')],first=items[0],last=items.at(-1);if(!first){e.preventDefault();return}if(e.shiftKey&&(document.activeElement===first||document.activeElement===dialog.current)){e.preventDefault();last.focus()}else if(!e.shiftKey&&(document.activeElement===last||document.activeElement===dialog.current)){e.preventDefault();first.focus()}}};
  return <>
